@@ -30,6 +30,10 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setFirstName('')
+    setLastName('')
+    setEmail('')
+
     try {
       const postData = await axios.post(URL, {
         firstName,
@@ -42,6 +46,16 @@ function App() {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${URL}${id}`)
+      const filteredData = formData.filter((data) => data.id !== id)
+      setFirstName(filteredData)
+    } catch (error) {
+      console.log(`Error deleting data: ${error.message}`)
+    }
+  }
+
   return (
     <div>
       <div>
@@ -53,14 +67,14 @@ function App() {
           }}
         />
         <input
-          placeholder="Please enter "
+          placeholder="Please enter lat name"
           value={lastName}
           onChange={(e) => {
             setLastName(e.target.value);
           }}
         />
         <input
-          placeholder="Please enter "
+          placeholder="Please enter email"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
@@ -74,6 +88,7 @@ function App() {
             <p>First Name: {data.firstName}</p>
             <p>Last Name: {data.lastName}</p>
             <p>Email: {data.email}</p>
+            <button onClick={handleDelete}>Delete</button>
           </div>
         );
       })}

@@ -39,6 +39,16 @@ app.post('/api/data', async (req, res) => {
     }
 })
 
+app.delete('/api/data/:id', async (req, res) => {
+    try {
+        const deleteData = await Form.findByIdAndDelete(req.params.id)
+        res.json(deleteData)
+    } catch (error) {
+        console.log('Error posting data:', error.message)
+        res.status(500).json({error: "Internal Server Error"})
+    }
+})
+
 app.listen(port, () => {
     try {
         console.log('Server chal gaya.')
