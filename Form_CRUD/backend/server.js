@@ -44,7 +44,17 @@ app.delete('/api/data/:id', async (req, res) => {
         const deleteData = await Form.findByIdAndDelete(req.params.id)
         res.json(deleteData)
     } catch (error) {
-        console.log('Error posting data:', error.message)
+        console.log('Error deleting data:', error.message)
+        res.status(500).json({error: "Internal Server Error"})
+    }
+})
+
+app.put('/api/data/:id', async (req,res) => {
+    try {
+        const putData = await Form.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.json(putData)
+    } catch (error) {
+        console.log('Error updating data:', error.message)
         res.status(500).json({error: "Internal Server Error"})
     }
 })

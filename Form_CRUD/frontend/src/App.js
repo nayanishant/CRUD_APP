@@ -48,11 +48,28 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${URL}${id}`)
-      const filteredData = formData.filter((data) => data.id !== id)
-      setFirstName(filteredData)
+      await axios.delete(`${URL}/${id}`)
+      const filteredData = formData.filter((data) => data._id !== id)
+      setFormData(filteredData)
     } catch (error) {
       console.log(`Error deleting data: ${error.message}`)
+    }
+  }
+
+  const handleUpdate = async (id) => {
+    try {
+      const updatedData = {
+        firstName,
+        lastName,
+        email
+      }
+      await axios.put(`${URL}/${id}`, updatedData)
+      const updatedIndex = formData.findIndex((data) => data._id === id)
+      formData[updatedIndex] = updatedData
+      setFormData([...formData])
+      
+    } catch (error) {
+      console.log(`Error updating data: ${error.message}`)
     }
   }
 
@@ -67,7 +84,7 @@ function App() {
           }}
         />
         <input
-          placeholder="Please enter lat name"
+          placeholder="Please enter last name"
           value={lastName}
           onChange={(e) => {
             setLastName(e.target.value);
@@ -88,7 +105,8 @@ function App() {
             <p>First Name: {data.firstName}</p>
             <p>Last Name: {data.lastName}</p>
             <p>Email: {data.email}</p>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={() => handleDelete(data._id)}>Delete</button>
+            <button onClick={() => handleUpdate(data._id)}>Update</button>
           </div>
         );
       })}
