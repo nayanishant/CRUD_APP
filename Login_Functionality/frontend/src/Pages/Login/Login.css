@@ -1,0 +1,44 @@
+.wrapper {
+    height: auto;
+    margin: 16px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 16px;
+    padding: 8px;
+}
+
+.cardHeader {
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-bottom: 16px;
+}
+
+.cardBody input {
+    width: 300px;
+    margin-bottom: 16px;
+    padding: 8px 8px;
+    border-radius: 4px;
+    outline: none;
+    border: 0.5px solid rgb(58, 57, 57);
+}
+
+button {
+    outline: none;
+    width: 200px;
+    background: chocolate;
+    color: aliceblue;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 0.5px solid chocolate;
+
+}
