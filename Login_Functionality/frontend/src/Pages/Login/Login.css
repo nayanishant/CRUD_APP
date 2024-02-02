@@ -7,7 +7,7 @@
     justify-content: center;
 }
 
-.card {
+.card_wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,5 +40,4 @@ button {
     border-radius: 8px;
     cursor: pointer;
     border: 0.5px solid chocolate;
-
 }

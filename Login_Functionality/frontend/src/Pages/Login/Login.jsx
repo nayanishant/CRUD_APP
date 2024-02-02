@@ -1,11 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     const data = {
@@ -16,6 +19,7 @@ const Login = () => {
 
     try {
       await axios.post("http://localhost:5000/login", data);
+      navigate('/showallusers');
     } catch (error) {
       console.log(error.message);
     }
@@ -23,7 +27,7 @@ const Login = () => {
 
   return (
     <div className="wrapper">
-      <div className="card">
+      <div className="card_wrapper">
         <div className="cardHeader">
           <h1>Welcome</h1>
         </div>
