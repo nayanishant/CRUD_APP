@@ -12,7 +12,7 @@ const ShowAllUsers = () => {
 
   const getUsers = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/login`);
+      const response = await axios.get(`http://localhost:5000`);
       setGetAllUsers(response.data.data);
     } catch (error) {
       console.log(error.message);

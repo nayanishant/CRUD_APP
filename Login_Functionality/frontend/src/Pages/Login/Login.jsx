@@ -18,7 +18,7 @@ const Login = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/login", data);
+      await axios.post("http://localhost:5000/register", data);
       navigate('/showallusers');
     } catch (error) {
       console.log(error.message);

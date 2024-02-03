@@ -12,7 +12,7 @@ connectDB()
 
 app.use(cors())
 app.use(express.json())
-app.use('/login', userRoutes)
+app.use('/', userRoutes)
 
 app.listen(port, () => {
     try {
