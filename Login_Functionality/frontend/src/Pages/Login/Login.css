@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 16px;
+    margin: 150px 16px 16px 16px;;
     padding: 8px;
 }
 
@@ -40,4 +40,9 @@ button {
     border-radius: 8px;
     cursor: pointer;
     border: 0.5px solid chocolate;
+}
+
+.cardHeader p {
+    font-size: 16px;
+    text-align: center;
 }

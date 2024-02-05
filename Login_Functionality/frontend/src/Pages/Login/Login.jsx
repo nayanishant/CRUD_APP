@@ -5,7 +5,6 @@ import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
@@ -13,12 +12,11 @@ const Login = () => {
   const handleSubmit = async () => {
     const data = {
       email,
-      username,
       password,
     };
 
     try {
-      await axios.post("http://localhost:5000/register", data);
+      await axios.post("http://localhost:5000/login", data);
       navigate('/showallusers');
     } catch (error) {
       console.log(error.message);
@@ -30,6 +28,7 @@ const Login = () => {
       <div className="card_wrapper">
         <div className="cardHeader">
           <h1>Welcome</h1>
+          <p>Please login into your account</p>
         </div>
         <div className="cardBody">
           <div>
@@ -38,14 +37,6 @@ const Login = () => {
               placeholder="Type your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Type your username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div>

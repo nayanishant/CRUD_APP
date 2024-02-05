@@ -3,8 +3,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const ShowAllUsers = () => {
-    
   const [getAllUsers, setGetAllUsers] = useState([]);
+
+  // set cookies from client side automatically
+  axios.defaults.withCredentials = true;
 
   useEffect(() => {
     getUsers();
@@ -12,7 +14,7 @@ const ShowAllUsers = () => {
 
   const getUsers = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000`);
+      const response = await axios.get(`http://localhost:5000/showallusers`);
       setGetAllUsers(response.data.data);
     } catch (error) {
       console.log(error.message);
