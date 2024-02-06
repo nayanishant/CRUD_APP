@@ -46,11 +46,11 @@ const loginHandler = async (req, res) => {
     const token = jwt.sign(
       { email: userExists.email },
       process.env.TOKEN_SECRET_KEY,
-      { expiresIn: process.env.TOKEN_EXPIRY }
+      { expiresIn: "1h" }
     );
 
     // Use httpOnly to make the token inaccessible to JavaScript
-    res.cookie("token", token, { httpOnly: true });
+    res.cookie("token", token);
 
     return res.status(200).send({ message: "Login successful", token });
   } catch (error) {

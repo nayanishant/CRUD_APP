@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -8,6 +8,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+
+  // set cookies from client side automatically
+  axios.defaults.withCredentials = true;
 
   const handleSubmit = async () => {
     const data = {
@@ -17,7 +20,7 @@ const Login = () => {
 
     try {
       await axios.post("http://localhost:5000/login", data);
-      navigate('/showallusers');
+      navigate("/showallusers");
     } catch (error) {
       console.log(error.message);
     }
@@ -41,7 +44,7 @@ const Login = () => {
           </div>
           <div>
             <input
-              type="text"
+              type="password"
               placeholder="Type your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

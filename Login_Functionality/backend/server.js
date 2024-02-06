@@ -17,12 +17,14 @@ app.use(cors({
     credentials: true
 }))
 app.use(express.json())
+app.use(cookieParser())
+
 app.use('/', userRoutes)
-app.use(cookieParser)
+
 
 app.listen(port, () => {
     try {
-        console.log(`Server connected at port ${5000}.`)
+        console.log(`Server connected at port ${port}.`)
     } catch (error) {
         console.log(`Error connecting server: ${error}`)
     }
